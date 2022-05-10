@@ -1,56 +1,62 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import charsData, { getChar, Char, Results } from '../Data/CharsData';
+import axios from 'axios';
+import { Char, Results } from '../Data/CharsData';
 
 const CharPage = () => {
   const [currentChar, setCurrentChar] = useState<Results>();
   const { id } = useParams();
   const navigate = useNavigate();
-  useEffect(() => {
-    const char = getChar(Number(id));
-    if (char) {
-      setCurrentChar(char);
-    } else {
+  const getCharacters = async () => {
+    try {
+      const response = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
+      setCurrentChar(response.data);
+      console.log(response);
+    } catch (error) {
       navigate('/chars');
+    } finally {
+      console.log('wazap');
     }
+  };
+  useEffect(() => {
+    getCharacters();
   }, []);
+
   return (
-    <div className="char-container">
-      <div className="image" style={{ backgroundImage: `url(${currentChar?.image})` }}>      </div>
+    <div className="char-page">
+      <div className="char-container">
+        <div className="image" style={{ backgroundImage: `url(${currentChar?.image})` }}> </div>
 
-      <div className="char">
-        <span>
-          ID:
-          {currentChar?.id}
+        <div className="char" style={{ background: currentChar?.status === 'Alive' ? 'rgba(30, 83, 23, 0.7)' : currentChar?.status === 'Dead' ? 'rgba(134, 21, 21, 0.7)' : 'rgba(0, 0, 0, 0.7)' }}>
+          <div className="char-info">
+            <span>name:</span>
+            <span>{currentChar?.name}</span>
 
-        </span>
-        <span>
-          NAME:
-          {currentChar?.name}
+          </div>
+          <div className="char-info">
+            <span>status:</span>
+            <span>
+              {currentChar?.status}
+            </span>
 
-        </span>
-        <span>
-          Status:
-          {currentChar?.status}
+          </div>
+          <div className="char-info">
+            <span>species:</span>
+            <span>
+              {currentChar?.species}
+            </span>
 
-        </span>
-        <span>
-          species:
-          {currentChar?.species}
+          </div>
+          <div className="char-info">
+            <span>gender:</span>
+            <span>{currentChar?.gender}</span>
 
-        </span>
-        <span>
-          type:
-          {currentChar?.type || 'unknown'}
+          </div>
+        </div>
 
-        </span>
-        <span>
-          gender:
-          {currentChar?.gender}
-
-        </span>
       </div>
-
     </div>
 
   );

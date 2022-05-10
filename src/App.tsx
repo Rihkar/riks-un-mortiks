@@ -3,26 +3,33 @@ import {
   BrowserRouter as Router, Routes, NavLink, Route, Navigate,
 } from 'react-router-dom';
 import CharsPage from './Pages/CharsPage/CharsPage';
-import HomePage from './Pages/HomePage/HomePage';
-import AboutPage from './Pages/AboutPage/AboutPage';
+import EpisodesPage from './Pages/EpisodesPage/EpisodesPage';
 import CharPage from './CharPage/CharPage';
+import EpisodePage from './EpisodePage/EpisodePage';
+import LocationsPage from './Pages/LocationsPage/LocationsPage';
 import './App.scss';
 
 const App = () => (
   <Router>
     <header>
       <nav className="navigation">
-        <NavLink className="link" to="/">Home</NavLink>
-        <NavLink className="link" to="/about">About</NavLink>
-        <NavLink className="link" to="/chars">Chars</NavLink>
-
+        <div className="navigation-box">
+          <NavLink className="link" to="/chars">Chars</NavLink>
+          <NavLink className="link" to="/episodes">Episodes</NavLink>
+          <NavLink className="link" to="/locations">Locations</NavLink>
+        </div>
       </nav>
+      <div className="rick-and-morty-page">
+        THE RICK AND MORTY PAGE
+      </div>
     </header>
     <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="chars" element={<CharsPage />} />
+      <Route path="/locations" element={<LocationsPage />} />
+      <Route path="/episodes" element={<EpisodesPage />} />
+      <Route path="/chars" element={<CharsPage />} />
       <Route path="/chars/:id" element={<CharPage />} />
+      <Route path="/episodes/:id" element={<EpisodePage />} />
+
       {/* <Route path="/users/:id" element={<UserPage />} /> */}
       {/* <Route path="*" element={<Page404 />} /> */}
 
