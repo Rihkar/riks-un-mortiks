@@ -6,9 +6,12 @@ import axios from 'axios';
 import { Char, Results } from '../Data/CharsData';
 
 const CharPage = () => {
-  const [currentChar, setCurrentChar] = useState<Results>();
   const { id } = useParams();
+  const [currentChar, setCurrentChar] = useState<Results>();
+  const [nextChar, setNextChar] = useState<string>();
+
   const navigate = useNavigate();
+
   const getCharacters = async () => {
     try {
       const response = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
@@ -23,9 +26,22 @@ const CharPage = () => {
   useEffect(() => {
     getCharacters();
   }, []);
+  useEffect(() => {
+    getCharacters();
+  }, [nextChar]);
 
   return (
     <div className="char-page">
+      <button
+        onClick={() => {
+          navigate(id === '1' ? '/chars/826)}' : `/chars/${(Number(id) - 1)}`);
+          setNextChar(id === '1' ? '/chars/826)}' : `/chars/${(Number(id) - 1)}`);
+        }}
+        className="button-all"
+        // disabled={id === '1'}
+      >
+        prev
+      </button>
       <div className="char-container">
         <div className="image" style={{ backgroundImage: `url(${currentChar?.image})` }}> </div>
 
@@ -57,6 +73,17 @@ const CharPage = () => {
         </div>
 
       </div>
+      <button
+        onClick={() => {
+          navigate(id === '826' ? '/chars/1)}' : `/chars/${(Number(id) + 1)}`);
+          setNextChar(id === '826' ? '/chars/1)}' : `/chars/${(Number(id) + 1)}`);
+        }}
+        className="button-all"
+        // disabled={id === '826'}
+      >
+        next
+
+      </button>
     </div>
 
   );

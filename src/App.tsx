@@ -14,7 +14,7 @@ const App = () => (
     <header>
       <nav className="navigation">
         <div className="navigation-box">
-          <NavLink className="link" to="/chars">Chars</NavLink>
+          <NavLink className="link" to="/chars">Characters</NavLink>
           <NavLink className="link" to="/episodes">Episodes</NavLink>
           <NavLink className="link" to="/locations">Locations</NavLink>
         </div>

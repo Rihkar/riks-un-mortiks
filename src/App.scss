@@ -108,6 +108,8 @@ background-position: center center;
 .char-page{
   margin: 0 auto;
   width: fit-content;
+  display: flex;
+  align-items: center;
 }
 
 
@@ -126,6 +128,7 @@ html {
   background-color: black;
   color: white;
   &:hover{
+    cursor: pointer;
     color:gold;
     border-color: gold;
   }
@@ -144,6 +147,11 @@ html {
   font-size: x-large;
   background: rgba(0, 0, 0, 0.4);
   color: white;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.7;
+  }
+
 }
 
 .button-unknown{
@@ -151,6 +159,11 @@ html {
   font-size: x-large;
   background: rgba(0, 0, 0, 0.4);
   color: white;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.7;
+  }
+
 }
 
 .button-alive{
@@ -158,6 +171,11 @@ html {
   font-size: x-large;
   background: rgba(30, 83, 23, 0.7);
   color: white;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.7;
+  }
+
 }
 
 .button-dead{
@@ -165,6 +183,11 @@ html {
   font-size: x-large;
   background: rgba(134, 21, 21, 0.7); 
   color: white;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.7;
+  }
+
 }
 
 .rick-and-morty-page{
