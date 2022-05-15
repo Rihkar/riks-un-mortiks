@@ -34,8 +34,8 @@ const CharPage = () => {
     <div className="char-page">
       <button
         onClick={() => {
-          navigate(id === '1' ? '/chars/826)}' : `/chars/${(Number(id) - 1)}`);
-          setNextChar(id === '1' ? '/chars/826)}' : `/chars/${(Number(id) - 1)}`);
+          navigate(id === '1' ? '/chars/826' : `/chars/${(Number(id) - 1)}`);
+          setNextChar(id === '1' ? '/chars/826' : `/chars/${(Number(id) - 1)}`);
         }}
         className="button-all"
         // disabled={id === '1'}
@@ -75,8 +75,8 @@ const CharPage = () => {
       </div>
       <button
         onClick={() => {
-          navigate(id === '826' ? '/chars/1)}' : `/chars/${(Number(id) + 1)}`);
-          setNextChar(id === '826' ? '/chars/1)}' : `/chars/${(Number(id) + 1)}`);
+          navigate(id === '826' ? '/chars/1' : `/chars/${(Number(id) + 1)}`);
+          setNextChar(id === '826' ? '/chars/1' : `/chars/${(Number(id) + 1)}`);
         }}
         className="button-all"
         // disabled={id === '826'}

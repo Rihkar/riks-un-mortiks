@@ -8,15 +8,15 @@ import { Char, Episodes, Results } from '../Data/CharsData';
 
 const EpisodePage = () => {
   const { id } = useParams();
+  const [currentId, setCurrentId] = useState<string | undefined>(id);
   const [participatingChars, setParticipatingChars] = useState<Results[]>();
   const [currentEpisode, setCurrentEpisode] = useState<Episodes>(); // ja liek episodes[] tad 52linija utt kluda
-  const [nextEpisode, setNextEpisode] = useState<string>();
 
   const navigate = useNavigate();
 
   const getEpisodes = async () => {
     try {
-      const response = await axios.get(`https://rickandmortyapi.com/api/episode/${id}`);
+      const response = await axios.get(`https://rickandmortyapi.com/api/episode/${currentId}`);
       setCurrentEpisode(response.data);
       console.log(response);
     } catch (error) {
@@ -29,7 +29,7 @@ const EpisodePage = () => {
   const getParticipatingChars = async () => {
     try {
       const response = await axios.get('https://rickandmortyapi.com/api/episode/');
-      setParticipatingChars(response.data.results[Number(id) - 1].characters);
+      setParticipatingChars(response.data.results[Number(currentId) - 1].characters);
       console.log(response.data.results.characters);
     } catch (error) {
       navigate('/episodes');
@@ -40,20 +40,18 @@ const EpisodePage = () => {
 
   useEffect(() => {
     getEpisodes();
-    getParticipatingChars();
-  }, []);
-  useEffect(() => {
-    getEpisodes();
-    getParticipatingChars();
-  }, [nextEpisode]);
+  }, [currentId]);
+  // useEffect(() => {
+  //   getParticipatingChars();
+  // });
 
   return (
     <div>
       <div className="char-page">
         <button
           onClick={() => {
-            navigate(id === '1' ? '/chars/826)}' : `/episodes/${(Number(id) - 1)}`);
-            setNextEpisode(id === '1' ? '/chars/826)}' : `/episodes/${(Number(id) - 1)}`);
+            setCurrentId(currentId === '1' ? '51' : `${Number(currentId) - 1}`);
+            navigate(currentId === '1' ? '/episodes/51' : `/episodes/${Number(currentId) - 1}`);
           }}
           className="button-all"
         >
@@ -91,8 +89,8 @@ const EpisodePage = () => {
         </div>
         <button
           onClick={() => {
-            navigate(id === '826' ? '/episodes/1)}' : `/episodes/${(Number(id) + 1)}`);
-            setNextEpisode(id === '826' ? '/episodes/1)}' : `/episodes/${(Number(id) + 1)}`);
+            setCurrentId(currentId === '51' ? '1' : `${Number(currentId) + 1}`);
+            navigate(currentId === '51' ? '/episodes/1' : `/episodes/${Number(currentId) + 1}`);
           }}
           className="button-all"
         >
