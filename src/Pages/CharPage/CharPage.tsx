@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Char, Results } from '../Data/CharsData';
+import { Char, Results } from '../../Data/CharsData';
 
 const CharPage = () => {
   const { id } = useParams();

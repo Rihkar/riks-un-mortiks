@@ -1,12 +1,12 @@
-import React from 'react';
 import {
   BrowserRouter as Router, Routes, NavLink, Route, Navigate,
 } from 'react-router-dom';
 import CharsPage from './Pages/CharsPage/CharsPage';
 import EpisodesPage from './Pages/EpisodesPage/EpisodesPage';
-import CharPage from './CharPage/CharPage';
-import EpisodePage from './EpisodePage/EpisodePage';
+import CharPage from './Pages/CharPage/CharPage';
+import EpisodePage from './Pages/EpisodePage';
 import LocationsPage from './Pages/LocationsPage/LocationsPage';
+import Page404 from './Pages/404';
 import './App.scss';
 
 const App = () => (
@@ -29,10 +29,8 @@ const App = () => (
       <Route path="/chars" element={<CharsPage />} />
       <Route path="/chars/:id" element={<CharPage />} />
       <Route path="/episodes/:id" element={<EpisodePage />} />
-
-      {/* <Route path="/users/:id" element={<UserPage />} /> */}
-      {/* <Route path="*" element={<Page404 />} /> */}
-
+      <Route path="*" element={<Navigate to="/404" />} />
+      <Route path="/404" element={<Page404 />} />
     </Routes>
   </Router>
 
