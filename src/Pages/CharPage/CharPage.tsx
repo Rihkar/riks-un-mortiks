@@ -38,7 +38,6 @@ const CharPage = () => {
           setNextChar(id === '1' ? '/chars/826' : `/chars/${(Number(id) - 1)}`);
         }}
         className="button-all"
-        // disabled={id === '1'}
       >
         prev
       </button>
@@ -79,7 +78,6 @@ const CharPage = () => {
           setNextChar(id === '826' ? '/chars/1' : `/chars/${(Number(id) + 1)}`);
         }}
         className="button-all"
-        // disabled={id === '826'}
       >
         next
 
