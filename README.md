@@ -12,4 +12,5 @@ Episodes and detailed info
 
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
+![rickandmorty](https://user-images.githubusercontent.com/76056427/212072065-4e65de72-edf6-4ad6-aec3-6f726be7dc59.gif)
 
